@@ -74,34 +74,6 @@ class UppaalModelSerializer {
 	 * 
 	 * @return The main part of the XML file in a char sequence.
 	 */
-	 /*
-	def static createTemplate() '''
-		<template>
-		<name>«UppaalModelBuilder.instance.template.name»</name>
-		<declaration>«FOR declaration : UppaalModelBuilder.instance.template.declarations.declaration SEPARATOR "\n"»
-		«declaration.exp»
-		«ENDFOR»</declaration>
-			
-		«FOR location : UppaalModelBuilder.instance.locations SEPARATOR "\n"»
-		<location id="«location.name»">
-		<name>«location.name»</name>
-		«IF !(location.comment == null)»<label kind="comments">«location.comment»</label>«ENDIF»
-		</location>
-			«ENDFOR»
-			
-		<init ref="«UppaalModelBuilder.instance.template.init.name»"/>
-			
-		«FOR transition : UppaalModelBuilder.instance.edges SEPARATOR "\n"»
-		<transition>
-		<source ref="«transition.source.name»"/>
-		<target ref="«transition.target.name»"/>
-		«IF !(transition.guard == null)»<label kind="guard">«transition.guard.exp»</label>«ENDIF»
-		«IF (transition.update.length == 1)»<label kind="assignment">«transition.update.get(0).exp»</label>«ENDIF»
-		</transition>
-		«ENDFOR»
-		</template>
-	'''
-	*/
 	def static createTemplate() '''
 		«FOR template : UppaalModelBuilder.instance.templates SEPARATOR "\n"»
 		<template>
@@ -148,15 +120,6 @@ class UppaalModelSerializer {
 	 * 
 	 * @return The footer of the XML file in a char sequence.
 	 */
-	 /*
-	def static createFooter() '''
-		<system>
-		Process = «UppaalModelBuilder.instance.template.name»();
-		system Process;
-		</system>
-		</nta>
-	'''
-	*/
 	def static createFooter() '''		
 		<system>
 		«FOR template : UppaalModelBuilder.instance.templates SEPARATOR "\n"»
