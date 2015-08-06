@@ -138,7 +138,6 @@ class UppaalModelBuilder {
 		var declaration = new DeclarationsFactoryImpl().createDataVariableDeclaration
 		declaration.exp = expression
 		this.nta.systemDeclarations.declaration.add(declaration)
-		println(nta.globalDeclarations.declaration.size)
 	}
 
 	/**

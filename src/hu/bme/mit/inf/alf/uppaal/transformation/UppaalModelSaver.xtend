@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl
  * of the UPPAAL model.
  * 
  * The class has only static fields and methods, because it does not store
- * anything.
+ * anything. 
  * 
- * @author Benedek Horvath 
+ * @author Benedek Horvath
  */
 class UppaalModelSaver {
 

@@ -47,7 +47,7 @@ class UppaalModelSerializer {
 			// information message, about the completion of the transformation.
 			println("Transformation has been finished.")
 		} catch (IOException ex) {
-			System.err.println("An error has occurred, while creating the XML file. " + ex.message)
+			System.err.println("An error occurred, while creating the XML file. " + ex.message)
 		}
 	}
 	
