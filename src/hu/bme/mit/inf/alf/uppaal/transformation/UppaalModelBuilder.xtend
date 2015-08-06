@@ -42,7 +42,6 @@ class UppaalModelBuilder {
 	 * The templates within the NTA. During the transformation, multiple
 	 * templates can be used. (The second top-level element of the UPPAAL model.)
 	 */
-	//private var template = new TemplatesFactoryImpl().createTemplate
 	private ArrayList<Template> template = new ArrayList<Template>
 	  
 	/**
@@ -101,15 +100,6 @@ class UppaalModelBuilder {
 	 *            The name of the Template.
 	 * @return The recently created and initialized Template.
 	 */
-	 /*
-	def createTemplate(String name) {
-		var template = new TemplatesFactoryImpl().createTemplate
-		template.name = name
-		this.template = template
-		this.template.declarations = new DeclarationsFactoryImpl().createLocalDeclarations		
-		return template
-	}
-	*/
 	def createTemplate(String name) {
 		var template = new TemplatesFactoryImpl().createTemplate
 		template.name = name
@@ -125,13 +115,6 @@ class UppaalModelBuilder {
 	 * @param expression
 	 *            The local declaration statement, that should be stored.
 	 */
-	/*
-	def addLocalDeclaration(String expression) {
-		var declaration = new DeclarationsFactoryImpl().createDataVariableDeclaration
-		declaration.exp = expression
-		this.template.declarations.declaration.add(declaration)
-	}
-	*/
 	def addLocalDeclaration(String expression, Template template) {
 		var declaration = new DeclarationsFactoryImpl().createDataVariableDeclaration
 		declaration.exp = expression
@@ -174,21 +157,10 @@ class UppaalModelBuilder {
 	 *            The name of the location.
 	 * @return The recently created location.
 	 */
-	 /*
-	def createLocation(String name) {
-		var location = new TemplatesFactoryImpl().createLocation
-		location.name = name + "_" + this.locations.length
-		if(name.isEmpty) {
-			location.name = "Location_" + this.locations.length
-		}
-		this.locations.add(location)
-		return location
-	}
-	*/
 	def createLocation(String name, Template template) {
 		var location = new TemplatesFactoryImpl().createLocation
 		location.name = name
-		if(name.isEmpty) {
+		if (name.isEmpty) {
 			location.name = "PseudoState"
 		}
 		template.location.add(location)
@@ -240,13 +212,6 @@ class UppaalModelBuilder {
 	 * 
 	 * @return The recently created edge.
 	 */
-	 /*
-	def createEdge() {
-		var edge = new TemplatesFactoryImpl().createEdge
-		this.edges.add(edge)
-		return edge
-	}
-	* */
 	def createEdge(Template template) {
 		var edge = new TemplatesFactoryImpl().createEdge
 		template.edge.add(edge)
@@ -263,7 +228,7 @@ class UppaalModelBuilder {
 	 *            The source location of the edge.
 	 */
 	def setEdgeSource(Edge edge, Location source) {
-		if(edge != null) {
+		if (edge != null) {
 			edge.source = source
 		}
 	}
@@ -276,7 +241,7 @@ class UppaalModelBuilder {
 	 *            The specified edge, whose source location will be received.
 	 */
 	def getEdgeSource(Edge edge) {
-		if(edge != null) {
+		if (edge != null) {
 			return edge.source
 		}
 		else {
@@ -418,10 +383,6 @@ class UppaalModelBuilder {
 	 * 
 	 * @return A reference for the stored locations.
 	 */
-	/*
-	def getLocations() {
-		return locations
-	}*/
 	def getLocations(Template template) {
 		return template.location		
 	}
@@ -432,11 +393,6 @@ class UppaalModelBuilder {
 	 * 
 	 * @return A reference for the stored locations.
 	 */
-	 /*
-	 def getEdges() {
-		return edges
-	}
-	*/
 	def getEdges(Template template) {
 		return template.edge
 	}
@@ -445,17 +401,6 @@ class UppaalModelBuilder {
 	 * Assemble the UPPAAL model: add the locations and the edges to the
 	 * already stored Template, and add the Template to the NTA.
 	 */
-	 /*
-	 def buildModel() {
-			for (edge : this.edges) {
-				template.edge.add(edge)
-			}
-			for (location : this.locations) {
-				template.location.add(location)
-			}
-			this.nta.template.add(template)
-	}
-	*/
 	def buildModel() {
 		for (template : this.template) {
 			for (edge : this.edges) {
@@ -485,7 +430,6 @@ class UppaalModelBuilder {
 	 */
 	def reset() {
 		this.nta = new UppaalFactoryImpl().createNTA
-		//this.template = new TemplatesFactoryImpl().createTemplate
 		this.template = new ArrayList<Template>
 		this.locations.clear
 		this.edges.clear
