@@ -204,6 +204,19 @@ class UppaalModelBuilder {
 	def setLocationComment(Location location, String comment) {
 		location.comment = comment
 	}
+	
+	/**
+	 * Set an invariant for the specified location.
+	 * 
+	 * @param location
+	 *            The location that will store the specified comment.
+	 * @param comment
+	 *            The comment that should be stored by the location.
+	 */
+	def setLocationInvariant(Location location, String invariant) {
+		location.invariant = new ExpressionsFactoryImpl().createCompareExpression
+		location.invariant.exp = invariant.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+	}
 
 	/**
 	 * Create and return a new edge. The edge will be stored in the edges' list 

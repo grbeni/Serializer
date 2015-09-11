@@ -84,7 +84,8 @@ class UppaalModelSerializer {
 			
 		«FOR location : template.location SEPARATOR "\n"»
 		<location id="«location.name»">
-		<name>«location.name»</name>
+		<name>«location.name»</name>		
+		«IF !(location.invariant == null)»<label kind="invariant">«location.invariant.exp»</label>«ENDIF»
 		«IF !(location.comment == null)»<label kind="comments">«location.comment»</label>«ENDIF»
 		«IF (location.locationTimeKind.literal.equals("COMMITED"))»<committed/>«ENDIF»
 		«IF (location.locationTimeKind.literal.equals("URGENT"))»<urgent/>«ENDIF»
