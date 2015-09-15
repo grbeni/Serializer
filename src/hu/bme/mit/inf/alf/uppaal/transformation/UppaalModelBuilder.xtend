@@ -6,6 +6,7 @@ import de.uni_paderborn.uppaal.impl.UppaalFactoryImpl
 import de.uni_paderborn.uppaal.templates.Edge
 import de.uni_paderborn.uppaal.templates.Location
 import de.uni_paderborn.uppaal.templates.LocationKind
+import de.uni_paderborn.uppaal.templates.Synchronization
 import de.uni_paderborn.uppaal.templates.SynchronizationKind
 import de.uni_paderborn.uppaal.templates.Template
 import de.uni_paderborn.uppaal.templates.impl.TemplatesFactoryImpl
@@ -331,6 +332,10 @@ class UppaalModelBuilder {
 		} /*else {
 			throw new NullPointerException("Az sync-nél az edge null.");
 		}*/
+	}
+	
+	def setEdgeSync(Edge edge, Synchronization sync) {
+		edge.synchronization = sync
 	}
 	
 	/**
