@@ -97,7 +97,7 @@ class UppaalModelSerializer {
 		<transition>
 		<source ref="«transition.source.name»"/>
 		<target ref="«transition.target.name»"/>
-		«IF !(transition.guard == null)»<label kind="guard">«transition.guard.exp.replaceAll("&&", "&amp;&amp;")»</label>«ENDIF»
+		«IF !(transition.guard == null)»<label kind="guard">«transition.guard.exp.replaceAll("&&", "&amp;&amp;").replaceAll("<", "&lt;").replaceAll(">","&gt;")»</label>«ENDIF»
 		«IF !(transition.synchronization == null)»<label kind="synchronisation">«transition.synchronization.channelExpression.exp»«transition.synchronization.kind.literal»</label>«ENDIF»
 		«IF !(transition.update == null)»<label kind="assignment">
 		«FOR anUpdate : transition.update SEPARATOR ", "» 
