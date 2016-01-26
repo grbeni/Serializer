@@ -231,6 +231,24 @@ class UppaalModelBuilder {
 		return edge
 	}
 	
+	/**
+	 * Clone and return an edge. The edge will be stored in the edges' list 
+	 * by the UppaalModelBuilder.
+	 * 
+	 * @return The recently cloned edge.
+	 */
+	def cloneEdge(Edge edge) {
+		var newEdge = new TemplatesFactoryImpl().createEdge
+		newEdge.source = edge.source;
+		newEdge.target = edge.target;
+		setEdgeSync(newEdge, edge.synchronization)
+		setEdgeGuard(newEdge, getEdgeGuard(edge))
+		for (update : edge.update) {
+			setEdgeUpdate(newEdge, update.exp)		
+		}
+		edge.parentTemplate.edge.add(newEdge)
+		return newEdge
+	}
 	
 	/**
 	 * Set the source location of the specified edge.
