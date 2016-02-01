@@ -318,7 +318,7 @@ class UppaalModelBuilder {
 	 *            The update expression of the edge.
 	 */
 	def setEdgeUpdate(Edge edge, String updateExpression) {
-		if (edge != null) {
+		if (edge != null && updateExpression != "" && updateExpression != null) {
 			var update = new ExpressionsFactoryImpl().createAssignmentExpression
 			update.exp = updateExpression
 			edge.update.add(update)
