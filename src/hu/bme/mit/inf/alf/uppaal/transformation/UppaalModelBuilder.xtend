@@ -241,7 +241,7 @@ class UppaalModelBuilder {
 		var newEdge = new TemplatesFactoryImpl().createEdge
 		newEdge.source = edge.source;
 		newEdge.target = edge.target;
-		setEdgeSync(newEdge, edge.synchronization)
+		setEdgeSync(newEdge, edge.synchronization.channelExpression.exp, edge.synchronization.kind == SynchronizationKind.SEND)
 		setEdgeGuard(newEdge, getEdgeGuard(edge))
 		for (update : edge.update) {
 			setEdgeUpdate(newEdge, update.exp)		

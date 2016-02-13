@@ -24,8 +24,6 @@ import java.io.IOException
  */
  
 class UppaalModelSerializer {
-	var static id1 = 0
-	var static id2 = 0
 	/**
 	 * Save the UPPAAL model specified by the UppaalModelBuilder to an XML file,
 	 * denoted by its file path. The created XML file can be loaded by the
@@ -43,8 +41,7 @@ class UppaalModelSerializer {
 			val footer = createFooter
 			fw.write(header + body.toString + footer)
 			fw.close
-			id1 = id2 = 0;
-			// information message, about the completion of the transformation.
+			// Information message, about the completion of the transformation.
 			println("Transformation has been finished.")
 		} catch (IOException ex) {
 			System.err.println("An error occurred, while creating the XML file. " + ex.message)
